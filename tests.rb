@@ -1,9 +1,10 @@
 require 'minitest/autorun'
 require 'minitest/pride'
-require 'byebug'
-require 'httparty'
 require './local_weather_data.rb'
 require './ten_day_forecast.rb'
+require './rise_and_set_times.rb'
+require './weather_alerts.rb'
+require './active_hurricanes.rb'
 
 class WeatherReportTest < Minitest::Test
 
@@ -36,5 +37,15 @@ class WeatherReportTest < Minitest::Test
   #   assert_equal HTTParty::Response, times.data.class
   #   assert_equal String, times.display_times.class
   # end
+  # def test_can_return_weather_alerts
+  #     alerts = WeatherAlerts.new(27278)
+  #     assert_equal HTTParty::Response, alerts.data.class
+  #     assert_equal String, alerts.display_alerts.class
+  # end
+  def test_can_return_active_hurricanes
+    hurricanes = ActiveHurricanes.new(27278)
+    assert_equal HTTParty::Response, hurricanes.data.class
+    assert_equal String, hurricanes.display_storms.class
+  end
 
 end
