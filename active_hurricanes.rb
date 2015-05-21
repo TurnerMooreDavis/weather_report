@@ -12,13 +12,12 @@ attr_reader :data
     return_string = "Active Hurricanes:\n"
     if data["currenthurricane"].length > 0
       data["currenthurricane"].each do |hurricane|
-        return_string += "#{hurricane.to_s}\n"
+        return_string += "#{hurricane["description"]}\n"
       end
     else
-      return_string += "No active hurricanes"
+      return_string += "No active hurricanes\n"
     end
-    return return_string.to_s
+    return return_string += "\n"
   end
-
 
 end

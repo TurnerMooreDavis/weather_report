@@ -9,7 +9,7 @@ attr_reader :data
   end
 
   def display_times
-    return "Sunrise: #{data["sun_phase"]["sunrise"]["hour"]}:#{data["sun_phase"]["sunrise"]["minute"]}\nSunset: #{data["sun_phase"]["sunset"]["hour"]}:#{data["sun_phase"]["sunset"]["minute"]}".to_s
+    return "Sunrise: #{data["sun_phase"]["sunrise"]["hour"]}:#{data["sun_phase"]["sunrise"]["minute"]}\nSunset: #{data["sun_phase"]["sunset"]["hour"]}:#{data["sun_phase"]["sunset"]["minute"]}\n\n".to_s
   end
 
 end

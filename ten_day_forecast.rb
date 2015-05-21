@@ -9,11 +9,11 @@ attr_reader :data
   end
 
   def display_forecast
-    return_string = "10 day forecast\n\n"
+    return_string = "10 Day Forecast\n"
     @data["forecast"]["txt_forecast"]["forecastday"].each do |period|
-       return_string += "#{period["title"]}: #{period["fcttext"]}\n\n"
+       return_string += "#{period["title"]}: #{period["fcttext"]}\n"
     end
-    return_string.to_s
+    return_string +="\n"
   end
 
 end

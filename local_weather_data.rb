@@ -9,7 +9,7 @@ attr_reader :data
   end
 
   def display_weather
-    return ("In #{@data["current_observation"]["observation_location"]["full"]} it is #{@data["current_observation"]["temperature_string"]} with wind #{@data["current_observation"]["wind_string"]}, and a relative humidity of #{@data["current_observation"]["relative_humidity"]} (#{@data["current_observation"]["observation_time"]})")
+    return ("Local Weather\nIn #{@data["current_observation"]["observation_location"]["full"]} it is #{@data["current_observation"]["temperature_string"]} with wind #{@data["current_observation"]["wind_string"]}, and a relative humidity of #{@data["current_observation"]["relative_humidity"]} (#{@data["current_observation"]["observation_time"]})\n\n")
   end
 
 end
