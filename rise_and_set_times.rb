@@ -4,8 +4,8 @@ require 'httparty'
 class RiseAndSetTimes
 attr_reader :data
 
-  def initialize(zip = 27514)
-    @data = HTTParty.get("http://api.wunderground.com/api/#{ENV['WU_KEY']}/astronomy/q/#{zip}.json")
+  def initialize(location = 27514)
+    @data = HTTParty.get("http://api.wunderground.com/api/#{ENV['WU_KEY']}/astronomy/q/#{location}.json")
   end
 
   def display_times

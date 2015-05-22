@@ -4,15 +4,37 @@ require './rise_and_set_times.rb'
 require './weather_alerts.rb'
 require './active_hurricanes.rb'
 
-puts "Please enter a Zip code to recieve your local weather report!"
-zip = gets.chomp
-while zip.length != 5 || zip.match(/[\D]/)
-  puts "Thats not a zip code...C'mon! Lets try this again"
-  zip = gets.chomp
+puts "Please enter a location code or city and state to recieve your local weather report!"
+input = gets.chomp
+location = ""
+def parse_input(input)
+  if !input.match(/[\d]/) && input[-2..-1].match(/[a-zA-Z]/) && input[-3].match(/(,|\s)/)
+    split = input.gsub(/[\,\.]/," ").split
+    location = "#{split[-1].upcase}/#{split[0..-2].join("_")}"
+  elsif input.length == 5 && !input.match(/[\D]/)
+    location = input
+  else
+    return false
+  end
+  return location
 end
-puts ""
-puts LocalWeatherData.new(zip).display_weather
-puts TenDayForecast.new(zip).display_forecast
-puts RiseAndSetTimes.new(zip).display_times
-puts WeatherAlerts.new(zip).display_alerts
-puts ActiveHurricanes.new(zip).display_storms
+
+def puts_report(location)
+  while location == false
+    puts "Thats not a location...C'mon! Lets try this again"
+    new_input = gets.chomp
+    location = parse_input(new_input)
+  end
+  puts ""
+  puts LocalWeatherData.new(location).display_weather
+  puts TenDayForecast.new(location).display_forecast
+  puts RiseAndSetTimes.new(location).display_times
+  puts WeatherAlerts.new(location).display_alerts
+  puts ActiveHurricanes.new(location).display_storms
+  rescue
+    puts "Thats not a location...C'mon! Lets try this again"
+    another_input = gets.chomp
+    puts_report(parse_input(another_input))
+end
+
+puts_report(parse_input(input))

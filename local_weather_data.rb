@@ -4,8 +4,8 @@ require 'httparty'
 class LocalWeatherData
 attr_reader :data
 
-  def initialize(zip = 27514)
-    @data = HTTParty.get("http://api.wunderground.com/api/#{ENV['WU_KEY']}/conditions/q/#{zip}.json")
+  def initialize(location = 27514)
+    @data = HTTParty.get("http://api.wunderground.com/api/#{ENV['WU_KEY']}/conditions/q/#{location}.json")
   end
 
   def display_weather
