@@ -26,15 +26,17 @@ def puts_report(location)
     location = parse_input(new_input)
   end
   puts ""
-  puts LocalWeatherData.new(location).display_weather
-  puts TenDayForecast.new(location).display_forecast
-  puts RiseAndSetTimes.new(location).display_times
-  puts WeatherAlerts.new(location).display_alerts
-  puts ActiveHurricanes.new(location).display_storms
+  begin
+    puts LocalWeatherData.new(location).display_weather
+    puts TenDayForecast.new(location).display_forecast
+    puts RiseAndSetTimes.new(location).display_times
+    puts WeatherAlerts.new(location).display_alerts
+    puts ActiveHurricanes.new.display_storms
   rescue
-    puts "Thats not a location...C'mon! Lets try this again"
+    puts "There was an error...Lets try this again"
     another_input = gets.chomp
     puts_report(parse_input(another_input))
+  end
 end
 
 puts_report(parse_input(input))

@@ -4,8 +4,8 @@ require 'httparty'
 class ActiveHurricanes
 attr_reader :data
 
-  def initialize(location = 27514)
-    @data = HTTParty.get("http://api.wunderground.com/api/#{ENV['WU_KEY']}/currenthurricane/q/#{location}.json")
+  def initialize
+    @data = HTTParty.get("http://api.wunderground.com/api/#{ENV['WU_KEY']}/currenthurricane/view.json")
   end
 
   def display_storms
